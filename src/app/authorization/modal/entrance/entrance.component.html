@@ -1,0 +1,35 @@
+<div class="backdrop"></div>
+<form class="modal" [formGroup]="registrationForm">
+  <div class="form-control">
+    <label for = "email">Email</label>
+    <input id="email" type="email" [formControlName]="'email'">
+  </div>
+  <div class="form-erorr" *ngIf="registrationForm.controls['email'].invalid">
+    Обязательно для заполнения
+  </div>
+  <div class="form-control">
+    <label for = "password">password</label>
+    <input id="password" type="password" [formControlName]="'password'" >
+  </div>
+  <div class="form-erorr" *ngIf="registrationForm.controls['password'].invalid">
+    Обязательно для заполнения
+  </div>
+  <button
+    type="submit"
+    class="btn"
+    [disabled]="registrationForm.invalid"
+    (click)="onSubmit()">
+    Войти</button>
+  <div>
+    <ul>
+      <li *ngFor="let user of users">
+        <div>{{user.email}}</div>
+        <div>{{user.password}}</div>
+      </li>
+    </ul>
+  </div>
+</form>
+
+
+
+
