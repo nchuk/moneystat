@@ -4,6 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {MainLayoutComponent} from "./main-layout/main-layout.component";
 import {SummaryPageComponent} from "./children/summary-page/summary-page.component";
 import {TransactionPageComponent} from "./children/transaction-page/transaction-page.component";
+import {SharedModule} from "../shared/module/shared.module";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
   ],
   imports:[
     CommonModule,
+    SharedModule,
     RouterModule,
     RouterModule.forChild(routes)
   ],

@@ -1,0 +1,23 @@
+body{
+  margin: 9% 5%  9% 5%;
+  width: 100%;
+  flex-flow: column wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+}
+.block{
+  background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 100%);
+  box-shadow: 10px 15px 20px rgba(82, 126, 185, 0.1);
+  border-radius: 10px;
+  margin: 10px;
+}
+.check{
+  display: flex;
+}
+.expenses-categories{
+  display: flex;
+
+}

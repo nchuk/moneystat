@@ -1,2 +1,14 @@
-<p>main-layout works!</p>
-<router-outlet></router-outlet>
+<nav class="menu">
+  <h1>MoneyStat</h1>
+  <ul>
+    <li routerLinkActive="active">
+      <a [routerLink]="['']">Сводка</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['transaction']">Транзакции</a>
+    </li>
+  </ul></nav>
+<div class="main-body">
+  <router-outlet></router-outlet>
+</div>
+

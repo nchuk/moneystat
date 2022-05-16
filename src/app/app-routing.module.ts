@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from "./shared/services/auth.guard";
 
 
 const routes: Routes = [
   {
     path:'',
-    loadChildren: () => import('./cabinet/cabinet.web.module').then(m => m.CabinetWebModule)
+    loadChildren: () => import('./cabinet/cabinet.web.module').then(m => m.CabinetWebModule),
+    canActivate:[AuthGuard]
   },
   {
     path:'authorization',

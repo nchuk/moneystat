@@ -1,4 +1,6 @@
-import {Component, ComponentRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
+import {AuthenticationService} from "../services/authentication.service";
 import {EntranceComponent} from "../modal/entrance/entrance.component";
 import {RegistrationComponent} from "../modal/registration/registration.component";
 
@@ -7,23 +9,43 @@ import {RegistrationComponent} from "../modal/registration/registration.componen
   templateUrl: './authorization-layout.component.html',
   styleUrls: ['./authorization-layout.component.scss']
 })
-export class AuthorizationLayoutComponent  {
+export class AuthorizationLayoutComponent implements OnInit{
+  public message: string | undefined;
   @ViewChild('dynamic',{read: ViewContainerRef})
   private viewRef!: ViewContainerRef;
-  private componentRef!: ComponentRef<EntranceComponent>
+  private componentRef!: ComponentRef<EntranceComponent|RegistrationComponent>;
 
-  showDynamicComponent():void{
+  constructor( private _route: ActivatedRoute,
+               public auth: AuthenticationService,
+              ) {
+  }
+
+  showDynamicComponent(type:string):void{
+
     this.viewRef.clear();
-    this.componentRef = this.viewRef.createComponent(EntranceComponent)
+    switch (type){
+      case 'entrance':
+        this.componentRef = this.viewRef.createComponent(EntranceComponent);
+        break
+      case 'registration':
+        this.componentRef = this.viewRef.createComponent(RegistrationComponent);
+        break
+    }
+
   }
 
   removeDynamicComponent(): void{
     this.viewRef.clear();
   }
 
-  showDynamicComponentReg():void{
-    this.viewRef.clear();
-    this.componentRef = this.viewRef.createComponent(RegistrationComponent)
+
+  ngOnInit(): void {
+    this._route.queryParams.subscribe((params:Params) => {
+      if (params['loginAgain']){
+        this.message = 'Авторизуйтесь'
+      }
+    })
   }
+
 
 }
