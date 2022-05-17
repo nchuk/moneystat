@@ -1,5 +1,4 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TuiRootModule, TuiDialogModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,20 +10,16 @@ import {SharedModule} from "./shared/module/shared.module";
 import {AuthGuard} from "./shared/services/auth.guard";
 
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
-      TuiRootModule,
-      BrowserAnimationsModule,
-      TuiDialogModule
+    SharedModule
 ],
   providers: [AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
