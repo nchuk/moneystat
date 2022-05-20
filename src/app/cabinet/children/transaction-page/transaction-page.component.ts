@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-transaction-page',
-  templateUrl: './transaction-page.component.html',
-  styleUrls: ['./transaction-page.component.scss']
+    selector: 'app-transaction-page',
+    templateUrl: './transaction-page.component.html',
+    styleUrls: ['./transaction-page.component.scss']
 })
-export class TransactionPageComponent implements OnInit {
+export class TransactionPageComponent  {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

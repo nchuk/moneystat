@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../../authorization/services/authentication.service";
-import {Router} from "@angular/router";
+import { Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AuthenticationService } from '../../../authorization/services/authentication.service';
+import { Router } from '@angular/router';
+import { ModalTransactionComponent } from './components/transaction/modal-transaction/modal-transaction.component';
 
 @Component({
-  selector: 'app-summary-page',
-  templateUrl: './summary-page.component.html',
-  styleUrls: ['./summary-page.component.scss']
+    selector: 'app-summary-page',
+    templateUrl: './summary-page.component.html',
+    styleUrls: ['./summary-page.component.scss']
 })
-export class SummaryPageComponent implements OnInit {
+export class SummaryPageComponent {
 
-  constructor(private auth: AuthenticationService,
+  @ViewChild('dynamic',{ read: ViewContainerRef })
+    private _viewRef!: ViewContainerRef;
+  private _componentRef!: ComponentRef<ModalTransactionComponent>;
+
+  constructor(private _auth: AuthenticationService,
               private _router: Router) { }
 
-  ngOnInit(): void {
+  public showDynamicComponent():void{
+      this._viewRef.clear();
+      this._componentRef = this._viewRef.createComponent(ModalTransactionComponent);
+
   }
 
-  logOut():void{
-    this.auth.logout();
-    this._router.navigate(['authorization'])
+  public removeDynamicComponent(): void{
+      this._viewRef.clear();
   }
 
 }

@@ -1,0 +1,32 @@
+<div class="backdrop" (click)="closeModal()"></div>
+<form class="modal" [formGroup]="transactionForm" (ngSubmit)="submit()" >
+  <div class="form-control">
+    <label for = "expenses">расход</label>
+    <input id="expenses" type="text" [formControlName]="'sum'">
+  </div>
+  <div class="form-erorr" *ngIf="transactionForm.controls['sum'].invalid">
+    Обязательно для заполнения
+  </div>
+  <div class="form-control">
+    <label for = "categories">расход</label>
+    <input id="categories" type="text" [formControlName]="'sum'">
+  </div>
+  <div class="form-erorr" *ngIf="transactionForm.controls['sum'].invalid">
+    Обязательно для заполнения
+  </div>
+  <div class="date-picker">
+    <button id ="yesterday" type="button" (click)="datePicker($event)"> jdkj</button>
+    <button id ="today" type="button" (click)="datePicker($event)"> today</button>
+    <div class="other-date">
+      <input id="calendar" type="date" (input)="datePicker($event)">
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn"
+    [disabled]="transactionForm.invalid"
+    >
+    Сохранить</button>
+</form>
+

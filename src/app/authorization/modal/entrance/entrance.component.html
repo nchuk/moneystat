@@ -1,5 +1,5 @@
 <div class="backdrop" (click)="closeModal()"></div>
-<form class="modal" [formGroup]="entranceForm">
+<form class="modal" [formGroup]="entranceForm" (ngSubmit)="onSubmit()" >
   <button (click)="closeModal()">pfrhsnm</button>
   <div class="alert-danger" *ngIf="auth.error$ | async as error">
     {{error}}
@@ -21,8 +21,7 @@
   <button
     type="submit"
     class="btn"
-    [disabled]="entranceForm.invalid || submitted"
-    (click)="onSubmit()">
+    [disabled]="entranceForm.invalid || submitted">
     Войти</button>
 </form>
 

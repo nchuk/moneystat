@@ -1,6 +1,7 @@
-import {Environment} from "./interface";
+import { IEnvironment } from './interface';
 
-export const environment: Environment= {
-  production: true,
-  apiKey:'AIzaSyAw_tDMqP2PZ5jXYuqdQIjpRqGyPhcudxI'
+export const environment: IEnvironment= {
+    production: true,
+    apiKey:'AIzaSyAw_tDMqP2PZ5jXYuqdQIjpRqGyPhcudxI',
+    fbDbUrl:'https://moneystat-c0169-default-rtdb.europe-west1.firebasedatabase.app'
 };

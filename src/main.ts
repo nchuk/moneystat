@@ -5,8 +5,9 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+    // eslint-disable-next-line @typescript-eslint/typedef
+    .catch(err => console.error(err));
