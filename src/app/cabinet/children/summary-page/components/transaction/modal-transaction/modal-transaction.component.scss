@@ -5,14 +5,56 @@
   bottom: 0;
   left: 0;
   padding: 0;
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(70, 76, 85, 0.25);
 }
 
 .modal{
-  padding: 1rem;
+  padding: 0;
   background: #FFFFFF;
   position: absolute;
   right: 0;
   height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
 
 }
+.form-control{
+  display: flex;
+  flex-direction: column;
+}
+
+.sum{
+  height: 60px;
+  width: 100%;
+  background: #F5F7FB;
+  border:0;
+  box-shadow: inset 0px 2px 15px rgba(82, 126, 185, 0.2);
+}
+.categories{
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  cursor: pointer;
+  border:0;
+  background: #F5F7FB;
+  box-shadow: inset 0px 2px 15px rgba(82, 126, 185, 0.1);
+}
+
+
+.date-picker{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  background: #F5F7FB;
+  box-shadow: inset 0px 2px 15px rgba(82, 126, 185, 0.1);
+  align-items: center;
+}
+
+.data{
+  background: #F5F7FB;
+  border: 0;
+}
+
+

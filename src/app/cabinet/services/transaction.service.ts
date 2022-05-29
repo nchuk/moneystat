@@ -20,4 +20,18 @@ export class TransactionService {
                 };
             }));
     }
+
+    public getTransaction (): Observable<INewTransaction[]>{
+        return this._http.get(`${environment.fbDbUrl}/transaction.json`)
+            .pipe(map((response:{[key:string]: any}) => {
+                return Object
+                    .keys(response)
+                    // eslint-disable-next-line @typescript-eslint/typedef
+                    .map(key => ({
+                        ...response[key],
+                        id: key,
+                        date: new Date(response[key].date)
+                    }));
+            }));
+    }
 }

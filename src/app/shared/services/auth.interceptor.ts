@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import {catchError, Observable, Subscription, tap, throwError} from 'rxjs';
 import { AuthenticationService } from '../../authorization/services/authentication.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
 
+    private  _sub! :Subscription;
     constructor(private _auth: AuthenticationService,
     private _router: Router) {
 
@@ -41,4 +42,6 @@ export class AuthInterceptor implements HttpInterceptor{
                     return throwError(()=>error);
                 }));
     }
+
+
 }

@@ -1,14 +1,13 @@
 <body>
 <ng-template #dynamic></ng-template>
-<button class="transaction" (click)="showDynamicComponent()">Расходы</button>
 <div class="check">
-  <div class="expenses block">
+  <div class="expenses block" (click)="showDynamicComponent('Расходы')" >
     <h1>expenses</h1>
   </div>
-  <div class="balance block">
-    <h1>balance</h1>
+  <div class="balance block" >
+    <div class="vivod"></div>
   </div>
-  <div class="income block">
+  <div class="income block" (click)="showDynamicComponent('Доходы')" type="income">
     <h1>income</h1>
   </div>
 </div>

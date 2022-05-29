@@ -1,22 +1,24 @@
 <div class="backdrop" (click)="closeModal()"></div>
 <form class="modal" [formGroup]="transactionForm" (ngSubmit)="submit()" >
-  <div class="form-control">
-    <label for = "expenses">расход</label>
-    <input id="expenses" type="text" [formControlName]="'sum'">
+  <div class="name-modal"  >{{typeModal}}</div>
+  <div class="form-control sum">
+    <input class="sum" id="sum" type="text" [formControlName]="'sum'">
   </div>
   <div class="form-erorr" *ngIf="transactionForm.controls['sum'].invalid">
     Обязательно для заполнения
   </div>
   <div class="form-control">
-    <label for = "categories">расход</label>
-    <input id="categories" type="text" [formControlName]="'sum'">
+    <label for="categories">Категории:</label>
+    <select class="categories" id="categories" [formControlName]="'categories'">
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+    </select>
   </div>
-  <div class="form-erorr" *ngIf="transactionForm.controls['sum'].invalid">
+  <div class="form-erorr" *ngIf="transactionForm.controls['categories'].invalid">
     Обязательно для заполнения
   </div>
   <div class="date-picker">
-    <button id ="yesterday" type="button" (click)="datePicker($event)"> jdkj</button>
-    <button id ="today" type="button" (click)="datePicker($event)"> today</button>
+    <button class="data" id ="yesterday" type="button" (click)="datePicker($event)"> yesterday</button>
+    <button class="data" id ="today" type="button" (click)="datePicker($event)"> today</button>
     <div class="other-date">
       <input id="calendar" type="date" (input)="datePicker($event)">
     </div>
