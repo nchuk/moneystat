@@ -1,25 +1,24 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IFbCreateResponse, INewTransaction } from '../../shared/interfaces/interfaces';
-import { map, Observable } from 'rxjs';
+import {map, Observable, Subscription} from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn:'root' })
 export class TransactionService {
 
-    public readonly labels:string[] = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
-    public readonly value:number[] = [13769, 12367, 10172, 3018, 2592];
-    public readonly sum:number = this.value.reduce(function(sum:number, elem:number) {
-        return sum + elem;
-    }, 0);
-
+    public expenses!: number;
+    public income!:number;
+    public balance!:number;
+    public transaction!: INewTransaction[];
+    public transactionSub!: Subscription;
 
     constructor(private _http:HttpClient) {
     }
 
     public addTransaction(transaction: INewTransaction): Observable<INewTransaction>{
         return this._http.post<INewTransaction>(`${environment.fbDbUrl}/transaction.json`, transaction)
-            // @ts-ignore
+        // @ts-ignore
             .pipe(map((response: IFbCreateResponse) => {
                 return {
                     ...transaction,
@@ -27,6 +26,7 @@ export class TransactionService {
                     date: new Date(transaction.date)
                 };
             }));
+
     }
 
     public getTransaction (): Observable<INewTransaction[]>{
@@ -34,7 +34,7 @@ export class TransactionService {
             .pipe(map((response:{[key:string]: any}) => {
                 return Object
                     .keys(response)
-                    // eslint-disable-next-line @typescript-eslint/typedef
+                // eslint-disable-next-line @typescript-eslint/typedef
                     .map(key => ({
                         ...response[key],
                         id: key,

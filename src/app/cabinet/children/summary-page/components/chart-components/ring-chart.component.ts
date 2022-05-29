@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TransactionService } from '../../../../services/transaction.service';
+import { INewTransaction } from '../../../../../shared/interfaces/interfaces';
 
 @Component({
     selector: 'app-ring-chart',
@@ -8,21 +9,6 @@ import { TransactionService } from '../../../../services/transaction.service';
 })
 export class AppRingChartComponent {
 
-    public readonly sum:number;
-    public readonly value:number[];
-    public readonly labels:string[];
+  @Input() private _transactions!: INewTransaction[];
 
-    constructor(private _transactionService: TransactionService) {
-        this.sum = _transactionService.sum;
-        this.value = _transactionService.value;
-        this.labels = _transactionService.labels;
-    }
-
-    getValue(index: number): number {
-        return Number.isNaN(index) ? this.sum : this.value[index];
-    }
-
-    getLabel(index: number): string {
-        return Number.isNaN(index) ? 'Total' : this.labels[index];
-    }
 }

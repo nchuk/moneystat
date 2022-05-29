@@ -1,5 +1,4 @@
 body{
-
   width: 100%;
   flex-flow: column wrap;
   display: flex;
@@ -7,6 +6,7 @@ body{
   justify-content: space-around;
   align-items: center;
   flex-grow: 1;
+  gap: 20px;
 }
 .block{
   background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 100%);

@@ -2,7 +2,8 @@
 <ng-template #dynamic></ng-template>
 <div class="check">
   <div class="expenses block" (click)="showDynamicComponent('Расходы')" >
-    <h1>expenses</h1>
+    <h3>Расходы</h3>
+    <div class="sum"></div>
   </div>
   <div class="balance block" >
     <div class="vivod"></div>
@@ -19,7 +20,7 @@
     <app-ring-chart></app-ring-chart>
   </div>
   <div class="categories block">
-    <h1>categories</h1>
+    <app-list-transaction [transactions]="transaction"></app-list-transaction>
   </div>
 </div>
 </body>
