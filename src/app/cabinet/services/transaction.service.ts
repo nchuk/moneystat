@@ -6,6 +6,14 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn:'root' })
 export class TransactionService {
+
+    public readonly labels:string[] = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
+    public readonly value:number[] = [13769, 12367, 10172, 3018, 2592];
+    public readonly sum:number = this.value.reduce(function(sum:number, elem:number) {
+        return sum + elem;
+    }, 0);
+
+
     constructor(private _http:HttpClient) {
     }
 
@@ -34,4 +42,6 @@ export class TransactionService {
                     }));
             }));
     }
+
+
 }

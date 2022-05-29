@@ -8,6 +8,8 @@ import { AuthenticationService } from './authorization/services/authentication.s
 import { AuthGuard } from './shared/services/auth.guard';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TuiRootModule} from "@taiga-ui/core";
 
 const interceptorProvider : Provider = {
     provide: HTTP_INTERCEPTORS,
@@ -23,7 +25,9 @@ const interceptorProvider : Provider = {
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule,
+        TuiRootModule,
     ],
     providers: [AuthenticationService, AuthGuard, interceptorProvider],
     bootstrap: [AppComponent]

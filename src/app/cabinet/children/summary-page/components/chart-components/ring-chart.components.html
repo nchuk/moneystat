@@ -1,0 +1,11 @@
+<tui-ring-chart
+  [value]="value"
+  [content]="content"
+></tui-ring-chart>
+
+<ng-template
+  #content
+  let-index
+>
+  <div>{{getLabel(index)}}</div>
+</ng-template>

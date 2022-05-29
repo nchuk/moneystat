@@ -1,25 +1,24 @@
 import {
-  Component,
-  ComponentRef,
-  EventEmitter, Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-  ViewContainerRef
+    ChangeDetectionStrategy,
+    Component,
+    ComponentRef,
+    EventEmitter, Input,
+    ViewChild,
+    ViewContainerRef
 } from '@angular/core';
 import { AuthenticationService } from '../../../authorization/services/authentication.service';
 import { Router } from '@angular/router';
 import { ModalTransactionComponent } from './components/transaction/modal-transaction/modal-transaction.component';
 import { TransactionService } from '../../services/transaction.service';
-import { INewTransaction } from '../../../shared/interfaces/interfaces';
-import { Subscription } from 'rxjs';
+
 
 @Component({
     selector: 'app-summary-page',
     templateUrl: './summary-page.component.html',
-    styleUrls: ['./summary-page.component.scss']
+    styleUrls: ['./summary-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class SummaryPageComponent {
 
     // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility

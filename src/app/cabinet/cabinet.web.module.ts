@@ -7,6 +7,8 @@ import { TransactionPageComponent } from './children/transaction-page/transactio
 import { ModalTransactionComponent } from './children/summary-page/components/transaction/modal-transaction/modal-transaction.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionService } from './services/transaction.service';
+import {AppRingChartComponent} from './children/summary-page/components/chart-components/ring-chart.component';
+import {TuiRingChartModule} from "@taiga-ui/addon-charts";
 
 const routes: Routes = [
     {
@@ -25,15 +27,17 @@ const routes: Routes = [
         MainLayoutComponent,
         SummaryPageComponent,
         TransactionPageComponent,
-        ModalTransactionComponent
+        ModalTransactionComponent,
+        AppRingChartComponent
     ],
-    imports:[
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule.forChild(routes)
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    TuiRingChartModule
+  ],
     exports: [
         RouterModule
     ],
