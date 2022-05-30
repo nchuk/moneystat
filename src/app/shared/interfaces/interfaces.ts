@@ -22,4 +22,8 @@ export interface IFbCreateResponse {
   name: string
 }
 
+export interface IValue{
+  sum:number;
+  categories:string;
+}
 

@@ -1,8 +1,5 @@
-<table>
- <tbody>
-  <tr *ngFor="let transaction of transactions" >
-    <td>{{transaction.categories}}</td>
-    <td>{{transaction.sum}}</td>
- </tr>
- </tbody>
-</table>
+<body>
+<div class="items" *ngFor="  let transaction of transactions$| async">
+  <app-list-transaction-item [transaction]="transaction"></app-list-transaction-item>
+</div>
+</body>

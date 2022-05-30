@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ComponentRef,
-    EventEmitter, Input, OnDestroy, OnInit, Output,
+    Input, OnDestroy, OnInit, Output,
     ViewChild,
     ViewContainerRef
 } from '@angular/core';
@@ -12,6 +12,7 @@ import { ModalTransactionComponent } from './components/transaction/modal-transa
 import { TransactionService } from '../../services/transaction.service';
 import { INewTransaction } from '../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
+import { CalculateTransactionService } from '../../services/calculate-transaction.service';
 
 
 @Component({
@@ -23,8 +24,10 @@ import { Subscription } from 'rxjs';
 
 export class SummaryPageComponent implements OnInit,OnDestroy{
 
-    public transaction!: INewTransaction[];
+
+    public transactions!: INewTransaction[];
     public transactionSub!: Subscription;
+    public balance!:number[];
     @Input() public type!:string;
     @ViewChild('dynamic',{ read: ViewContainerRef })
     private _viewRef!: ViewContainerRef;
@@ -32,31 +35,42 @@ export class SummaryPageComponent implements OnInit,OnDestroy{
 
     constructor(private _auth: AuthenticationService,
               private _router: Router,
-              private _transactionService: TransactionService) {
+              private _transactionService: TransactionService,
+                private _calculateService:CalculateTransactionService) {
+
 
     }
 
-    public ngOnInit():void{
-        this.transactionSub=this._transactionService.getTransaction().subscribe((transaction: INewTransaction[]) =>{
-            this.transaction = transaction;
-        });
+    ngOnInit(): void {
+        this.getTransactions();
     }
+
+
+    public getTransactions():void{
+        this.transactionSub = this._transactionService.transactionSubject
+            .subscribe((transactions: INewTransaction[]) => {
+                this.transactions = transactions;
+                this.balance = this._calculateService.calculateBalance(this.transactions);
+            });
+
+    }
+
 
     public showDynamicComponent(type: string):void{
         this._viewRef.clear();
         this._componentRef = this._viewRef.createComponent(ModalTransactionComponent);
         this.type = type;
+
     }
 
     public removeDynamicComponent(): void{
         this._viewRef.clear();
     }
 
-    public ngOnDestroy():void {
-        if (this.transactionSub){
-            this.transactionSub.unsubscribe();
-        }
+    ngOnDestroy(): void {
+        this.transactionSub.unsubscribe();
     }
+
 
 
 }

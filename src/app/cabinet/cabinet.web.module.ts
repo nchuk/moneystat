@@ -7,9 +7,12 @@ import { TransactionPageComponent } from './children/transaction-page/transactio
 import { ModalTransactionComponent } from './children/summary-page/components/transaction/modal-transaction/modal-transaction.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionService } from './services/transaction.service';
-import {AppRingChartComponent} from './children/summary-page/components/chart-components/ring-chart.component';
-import {TuiRingChartModule} from "@taiga-ui/addon-charts";
-import {ListTransactionComponent} from "./children/summary-page/components/list-transaction/list-transaction.component";
+import { AppRingChartComponent } from './children/summary-page/components/chart-components/ring-chart.component';
+import { TuiRingChartModule } from '@taiga-ui/addon-charts';
+import { ListTransactionComponent } from './children/summary-page/components/list-transaction/list-transaction.component';
+import { ListTrsnsactionComponent } from './children/transaction-page/components/list-trsnsaction/list-trsnsaction.component';
+import { SearchSumPipe } from './children/transaction-page/pipes/search-sum.pipe';
+import { ListTransactionItemComponent } from './children/summary-page/components/list-transaction/list-transaction-item/list-transaction-item.component';
 
 const routes: Routes = [
     {
@@ -30,16 +33,19 @@ const routes: Routes = [
         TransactionPageComponent,
         ModalTransactionComponent,
         AppRingChartComponent,
-        ListTransactionComponent
+        ListTransactionComponent,
+        ListTrsnsactionComponent,
+        SearchSumPipe,
+        ListTransactionItemComponent
     ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    TuiRingChartModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        TuiRingChartModule
+    ],
     exports: [
         RouterModule
     ],

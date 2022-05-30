@@ -1,26 +1,30 @@
 <body>
 <ng-template #dynamic></ng-template>
 <div class="check">
-  <div class="expenses block" (click)="showDynamicComponent('Расходы')" >
-    <h3>Расходы</h3>
-    <div class="sum"></div>
+  <div class="transaction block " (click)="showDynamicComponent('Расходы')" >
+    <h3>Расходы:</h3>
+    <h1 class="sum">{{balance[0]}}</h1>
   </div>
-  <div class="balance block" >
-    <div class="vivod"></div>
+  <div class="transaction block balance" >
+    <h3>Баланс:</h3>
+    <h1>{{balance[2]}}</h1>
   </div>
-  <div class="income block" (click)="showDynamicComponent('Доходы')" type="income">
-    <h1>income</h1>
+  <div class="transaction block" (click)="showDynamicComponent('Доходы')" type="income">
+    <h3>Доход:</h3>
+    <h1 class="sum">{{balance[1]}}</h1>
   </div>
 </div>
-<div class="bar-graph block">
-  <h1>"bar-grap</h1>
+<div class="graph">
+  <div class="bar-graph block">
+    <h1>"bar-grap</h1>
+  </div>
 </div>
 <div class="expenses-categories ">
   <div class="basic-expenses block">
-    <app-ring-chart></app-ring-chart>
+    <app-ring-chart ></app-ring-chart>
   </div>
   <div class="categories block">
-    <app-list-transaction [transactions]="transaction"></app-list-transaction>
+    <app-list-transaction></app-list-transaction>
   </div>
 </div>
 </body>

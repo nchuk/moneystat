@@ -1,19 +1,17 @@
-import {Injectable, Input, OnInit} from '@angular/core';
+import { Injectable, Input, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IFbCreateResponse, INewTransaction } from '../../shared/interfaces/interfaces';
-import {map, Observable, Subscription} from 'rxjs';
+import { IFbCreateResponse, INewTransaction, IValue } from '../../shared/interfaces/interfaces';
+import {BehaviorSubject, map, Observable, share, Subscription} from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn:'root' })
 export class TransactionService {
 
-    public expenses!: number;
-    public income!:number;
-    public balance!:number;
-    public transaction!: INewTransaction[];
-    public transactionSub!: Subscription;
+    public  transactions:INewTransaction[] =[];
+    public transactionSubject:BehaviorSubject<INewTransaction[]> = new BehaviorSubject<INewTransaction[]>([]);
 
     constructor(private _http:HttpClient) {
+        this.initialization();
     }
 
     public addTransaction(transaction: INewTransaction): Observable<INewTransaction>{
@@ -40,8 +38,14 @@ export class TransactionService {
                         id: key,
                         date: new Date(response[key].date)
                     }));
-            }));
+            })).pipe(share());
     }
 
-
+    public initialization():void{
+        this.getTransaction()
+            .subscribe((transaction:INewTransaction[]) => {
+                this.transactions = transaction;
+                this.transactionSubject.next(transaction);
+            });
+    }
 }
