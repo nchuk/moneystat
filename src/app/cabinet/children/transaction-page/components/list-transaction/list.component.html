@@ -1,0 +1,15 @@
+<body>
+<div class="form-control">
+  <input type="text" placeholder="Сумма..." [(ngModel)]="searchSum">
+
+</div>
+
+<div class="items-list">
+  <div class="items" *ngFor="  let transaction of transactions | searchSum:searchSum">
+    <app-list-transaction-item [transaction]="transaction"></app-list-transaction-item>
+  </div>
+</div>
+
+</body>
+
+

@@ -8,6 +8,7 @@ import { RegistrationComponent } from './modal/registration/registration.compone
 
 
 
+
 @NgModule({
     declarations:[
         AuthorizationLayoutComponent,

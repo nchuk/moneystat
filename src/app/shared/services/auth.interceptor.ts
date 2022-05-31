@@ -27,24 +27,18 @@ export class AuthInterceptor implements HttpInterceptor{
             req = req.clone({
                 setParams: {
                     auth: this._auth.token
-                }, headers:newHeaders
+                }, headers: newHeaders,
+
             });
         }
 
         return next.handle(req)
             .pipe(
                 tap(()=>{
-                    console.log('untersept');
                 }),
                 catchError((error: HttpErrorResponse) =>{
-                    console.log('sdjfkj',error);
                     if (error.status === 401){
                         this._auth.logout();
-                        this._router.navigate(['/authorization'], {
-                            queryParams: {
-                                authFailed : true
-                            }
-                        });
                     }
 
                     return throwError(()=>error);

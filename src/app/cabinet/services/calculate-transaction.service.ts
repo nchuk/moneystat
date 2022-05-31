@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { INewTransaction } from '../../shared/interfaces/interfaces';
+import {ICategory, INewTransaction} from '../../shared/interfaces/interfaces';
 
 @Injectable({
     providedIn:'root'
@@ -9,6 +9,7 @@ export class CalculateTransactionService{
     public expenses:number =0 ;
     public income:number = 0;
     public balance:number = 0;
+    public arrCategories!:ICategory[];
 
     public calculateBalance(transactions:INewTransaction[]):number[]{
         for (let transaction:number = 0; transaction < transactions.length; transaction++) {
@@ -26,11 +27,15 @@ export class CalculateTransactionService{
         return [this.expenses, this.income, this.balance];
     }
 
-    // public calculateCategory(transaction:INewTransaction[]):[{category:string,value:number}]{
-    //   let result:[{category:string,value:number}] = [];
-    //   for (let i:number = 0; i < transaction.length; i++) {
-    //     if()
-    //   }
+    // public calculateCategory(transaction:INewTransaction[]):ICategory[]{
+    //     for (let i:number = 0; i < transaction.length; i++) {
+    //         // @ts-ignore
+    //         this.arrCategories[i]={
+    //             'category':transaction[i].categories,
+    //             'value':transaction[i].sum
+    //         };
+    //     }
     //
+    //     return this.arrCategories;
     // }
 }

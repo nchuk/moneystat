@@ -1,11 +1,16 @@
 <body>
-
-<div class="alert-info" *ngIf="message">
-  {{message}}
+<header>
+  <h1 class="moneystat-name">MoneyStat</h1>
+  <div class="buttons-container">
+    <button class="entrance button" (click)="showDynamicComponent('entrance')">Entrance</button>
+    <button class="registration button" (click)="showDynamicComponent('registration')">Registration</button>
+  </div>
+</header>
+<div class="centre">
+  <div class="alert-info" *ngIf="message">
+    <h4 class="message">{{message}}</h4>
+  </div>
 </div>
-<div class="buttons-container">
-  <button class="entrance" (click)="showDynamicComponent('entrance')">Entrance</button>
-  <button class="registration" (click)="showDynamicComponent('registration')">Registration</button>
-</div>
+<div class="bottom"></div>
 <ng-template #dynamic></ng-template>
 </body>

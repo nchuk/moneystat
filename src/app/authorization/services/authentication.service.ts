@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IFireBaseResponse, IUser } from '../../shared/interfaces/interfaces';
 import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 
 
@@ -11,7 +12,8 @@ export class AuthenticationService {
 
     public error$: Subject<string> = new Subject<string>();
 
-    constructor(private _http: HttpClient) {
+    constructor(private _http: HttpClient,
+                private _router: Router) {
 
     }
 
@@ -52,6 +54,7 @@ export class AuthenticationService {
 
     public logout(): void {
         this.setToken(null);
+        this._router.navigate(['/authorization']);
     }
 
     public isAuthenticated(): boolean {

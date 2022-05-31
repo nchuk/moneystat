@@ -65,6 +65,7 @@ export class SummaryPageComponent implements OnInit,OnDestroy{
 
     public removeDynamicComponent(): void{
         this._viewRef.clear();
+
     }
 
     ngOnDestroy(): void {

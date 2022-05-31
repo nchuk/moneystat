@@ -4,11 +4,11 @@ import { Subscription } from 'rxjs';
 import { TransactionService } from '../../../../services/transaction.service';
 
 @Component({
-    selector: 'app-list-trsnsaction',
-    templateUrl: './list-trsnsaction.component.html',
-    styleUrls: ['./list-trsnsaction.component.scss']
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss']
 })
-export class ListTrsnsactionComponent implements OnInit,OnDestroy {
+export class ListComponent implements OnInit,OnDestroy {
 
     public transactions!:INewTransaction[];
     public sub!: Subscription;

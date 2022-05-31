@@ -1,5 +1,6 @@
 <body>
-<div class="items" *ngFor="  let transaction of transactions$| async">
+<div class="items" *ngFor="  let transaction of transactions$ | async">
   <app-list-transaction-item [transaction]="transaction"></app-list-transaction-item>
 </div>
 </body>
+

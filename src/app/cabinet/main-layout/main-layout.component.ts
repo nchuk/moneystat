@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from "../../authorization/services/authentication.service";
 
 @Component({
     selector: 'app-main-layout',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class MainLayoutComponent  {
 
-    constructor() { }
+    constructor(private _auth:AuthenticationService) { }
 
+  public logout(){
+      this._auth.logout();
+  }
 }

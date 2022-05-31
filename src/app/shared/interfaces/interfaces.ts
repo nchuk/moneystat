@@ -27,3 +27,9 @@ export interface IValue{
   categories:string;
 }
 
+
+export interface ICategory{
+  category:string;
+  value:number;
+}
+

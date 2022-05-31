@@ -9,10 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionService } from './services/transaction.service';
 import { AppRingChartComponent } from './children/summary-page/components/chart-components/ring-chart.component';
 import { TuiRingChartModule } from '@taiga-ui/addon-charts';
-import { ListTransactionComponent } from './children/summary-page/components/list-transaction/list-transaction.component';
-import { ListTrsnsactionComponent } from './children/transaction-page/components/list-trsnsaction/list-trsnsaction.component';
+import { ListComponent } from './children/transaction-page/components/list-transaction/list.component';
 import { SearchSumPipe } from './children/transaction-page/pipes/search-sum.pipe';
 import { ListTransactionItemComponent } from './children/summary-page/components/list-transaction/list-transaction-item/list-transaction-item.component';
+import { ListItemComponent } from './children/transaction-page/components/list-transaction/list-item/list-item.component';
+import {ListTransactionComponent} from "./children/summary-page/components/list-transaction/list-transaction.component";
 
 const routes: Routes = [
     {
@@ -33,10 +34,12 @@ const routes: Routes = [
         TransactionPageComponent,
         ModalTransactionComponent,
         AppRingChartComponent,
-        ListTransactionComponent,
-        ListTrsnsactionComponent,
+        ListComponent,
+        ListComponent,
         SearchSumPipe,
-        ListTransactionItemComponent
+        ListTransactionItemComponent,
+        ListItemComponent,
+        ListTransactionComponent
     ],
     imports: [
         CommonModule,

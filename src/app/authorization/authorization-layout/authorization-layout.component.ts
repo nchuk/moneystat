@@ -42,10 +42,11 @@ export class AuthorizationLayoutComponent implements OnInit{
   public ngOnInit(): void {
       this._route.queryParams.subscribe((params:Params) => {
           if (params['loginAgain']){
-              this.message = 'Авторизуйтесь';
+              this.message = 'Вы не вошли в систему:\n Пожалуйста, авторизуйтесь';
           } else if (params['authFailed']) {
               this.message = 'Сессия истекла войдите заново';
           }
+
       });
   }
 

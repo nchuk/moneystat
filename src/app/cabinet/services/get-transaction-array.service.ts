@@ -10,8 +10,11 @@ export class GetTransactionArrayService{
 
     public getArray(transactions:INewTransaction[]):[number[],string[]]{
         for (let i = 0; i < transactions.length; i++) {
-            this.values[i]=transactions[i].sum;
-            this.categories[i]=transactions[i].categories;
+            if (transactions[i].type === 'Расходы'){
+                this.values[i]=transactions[i].sum;
+                this.categories[i]=transactions[i].categories;
+            }
+
         }
 
         return [this.values,this.categories];
