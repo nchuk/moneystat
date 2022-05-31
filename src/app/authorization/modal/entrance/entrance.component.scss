@@ -9,10 +9,74 @@
 }
 
 .modal{
-  padding: 1rem;
   background: #fff;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 20%;
   transform: translate(-50%, 0);
+  width: 25%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  padding: 20px;
+  filter: drop-shadow(0px 3px 15px #4851FB);
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 15px;
+  height: 50%;
+  gap:10px;
+  width: 80%;
+  color: #4851FB;
+
+}
+.control{
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  gap:10px;
+  width: 100%;
+  align-items: center;
+}
+.name{
+  text-align: center;
+  color: #4851FB;
+  margin: 0;
+  height: 5%;
+  font-size: 23px;
+  font-weight: 400;
+}
+input{
+  border: 1px solid #4851FB;
+  border-radius: 10px;
+  height: 40px;
+
+}
+button{
+  background: #4851FB;
+  border: 1px solid #4851FB;
+  box-shadow: 0 4px 4px rgba(72, 81, 251, 0.13);
+  border-radius: 10px;
+  height: 15%;
+  width: 60%;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 15px;
+}
+.form-erorr {
+  color: #FB4B81;
+  font-weight: 400;
+  font-size: 10px;
+}
+.alert-danger{
+  color: #FB4B81;
+  font-weight: 400;
+  font-size: 15px;
 }

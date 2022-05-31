@@ -1,23 +1,36 @@
 <div class="backdrop" (click)="closeModal()"></div>
 <form class="modal" [formGroup]="registrationForm">
-
+<h1 class="name">Регистрация:</h1>
   <div class="alert-danger" *ngIf="auth.error$ | async as error">
     {{error}}
   </div>
+  <div class="control">
   <div class="form-control">
-    <label for = "email">Email lkz htubcnhfebb</label>
+    <label for = "email">Email:</label>
     <input id="email" type="email" [formControlName]="'email'">
+    <div class="form-erorr" *ngIf="registrationForm.controls['email'].invalid">
+      Обязательно для заполнения
+    </div>
   </div>
-  <div class="form-erorr" *ngIf="registrationForm.controls['email'].invalid">
-    Обязательно для заполнения
-  </div>
+
   <div class="form-control">
-    <label for = "password">password</label>
+    <label for = "password">Password:</label>
     <input id="password" type="password" [formControlName]="'password'" >
+    <div class="form-erorr" *ngIf="registrationForm.controls['password'].invalid">
+      Обязательно для заполнения
+    </div>
   </div>
-  <div class="form-erorr" *ngIf="registrationForm.controls['password'].invalid">
-    Обязательно для заполнения
+
+    <div class="form-control">
+      <label for = "password-repeat">password</label>
+      <input id="password-repeat" type="password" [formControlName]="'password'" >
+      <div class="form-erorr" *ngIf="registrationForm.controls['password'].invalid">
+        Обязательно для заполнения
+      </div>
+    </div>
+
   </div>
+
   <button
     type="submit"
     class="btn"

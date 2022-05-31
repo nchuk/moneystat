@@ -1,23 +1,28 @@
 <div class="backdrop" (click)="closeModal()"></div>
 <form class="modal" [formGroup]="entranceForm" (ngSubmit)="onSubmit()" >
-  <button (click)="closeModal()">pfrhsnm</button>
+  <h1 class="name">Вход:</h1>
   <div class="alert-danger" *ngIf="auth.error$ | async as error">
     {{error}}
   </div>
-  <div class="form-control">
-    <label for = "email">Email</label>
-    <input id="email" type="email" [formControlName]="'email'">
+  <div class="control">
+    <div class="form-control">
+      <label for = "email">Email:</label>
+      <input id="email" type="email" [formControlName]="'email'">
+      <div class="form-erorr" *ngIf="entranceForm.controls['email'].invalid">
+        Обязательно для заполнения
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for = "password">Password:</label>
+      <input id="password" type="password" [formControlName]="'password'" >
+      <div class="form-erorr" *ngIf="entranceForm.controls['password'].invalid">
+        Обязательно для заполнения
+      </div>
+    </div>
+
   </div>
-  <div class="form-erorr" *ngIf="entranceForm.controls['email'].invalid">
-    Обязательно для заполнения
-  </div>
-  <div class="form-control">
-    <label for = "password">password</label>
-    <input id="password" type="password" [formControlName]="'password'" >
-  </div>
-  <div class="form-erorr" *ngIf="entranceForm.controls['password'].invalid">
-    Обязательно для заполнения
-  </div>
+
   <button
     type="submit"
     class="btn"
